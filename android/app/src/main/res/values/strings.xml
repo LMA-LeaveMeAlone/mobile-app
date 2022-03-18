@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">leaveMeAlone</string>
+    <string name="title_activity_main">leaveMeAlone</string>
+    <string name="package_name">com.lpiotia.lma</string>
+    <string name="custom_url_scheme">com.lpiotia.lma</string>
+</resources>

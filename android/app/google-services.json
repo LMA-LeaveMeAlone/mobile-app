@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "255858445589",
+    "project_id": "leavemealone-ed5c1",
+    "storage_bucket": "leavemealone-ed5c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255858445589:android:7d7a1cfaf916b2fc376d1c",
+        "android_client_info": {
+          "package_name": "com.lpiotia.lma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255858445589-fmtbdc5ucfm7gqv0dtgd5t3rv7m5oug4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLToP2pff5dY6BeknKcZ16kthFvVDcDq4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255858445589-fmtbdc5ucfm7gqv0dtgd5t3rv7m5oug4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
