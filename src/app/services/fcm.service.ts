@@ -53,7 +53,7 @@ export class FcmService {
       }
     );
  
-    PushNotifications.addListener(
+    /*PushNotifications.addListener(
       'pushNotificationActionPerformed',
       async (notification: PushNotificationActionPerformed) => {
         const data = notification.notification.data;
@@ -62,6 +62,6 @@ export class FcmService {
           this.router.navigateByUrl(`/home/${data.detailsId}`);
         }
       }
-    );
+    );*/
   }
 }
