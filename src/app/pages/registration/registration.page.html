@@ -1,48 +1,53 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Register</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <!-- Register fields -->
-  <form (ngSubmit)="submit()">
-    <ion-item lines="full">
-      <ion-label position="floating">User name</ion-label>
-      <ion-input [(ngModel)]="userName" name="userName" type="text" required></ion-input>
-    </ion-item>
-    <ion-item lines="full">
-      <ion-label position="floating">First name</ion-label>
-      <ion-input [(ngModel)]="firstName" name="firstName" type="text" required></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label position="floating">Last name</ion-label>
-      <ion-input [(ngModel)]="lastName" name="lastName" type="text" required></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input [(ngModel)]="email" name="email" type="text" required></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
-    </ion-item>
-
-    <ion-row>
-      <ion-col>
-        <ion-button type="submit" color="danger" expand="block">Sign Up</ion-button>
-      </ion-col>
-    </ion-row>
-  </form>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Créer un compte</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="submit()">
+        <ion-item lines="full">
+          <ion-label position="floating">Identifiant</ion-label>
+          <ion-input [(ngModel)]="userName" name="userName" type="text" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Prénom</ion-label>
+          <ion-input [(ngModel)]="firstName" name="firstName" type="text" required></ion-input>
+        </ion-item>
+    
+        <ion-item lines="full">
+          <ion-label position="floating">Nom</ion-label>
+          <ion-input [(ngModel)]="lastName" name="lastName" type="text" required></ion-input>
+        </ion-item>
+    
+        <ion-item lines="full">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input [(ngModel)]="email" name="email" type="text" required></ion-input>
+        </ion-item>
+    
+        <ion-item lines="full">
+          <ion-label position="floating">Mot de passe</ion-label>
+          <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
+        </ion-item>
+    
+        <ion-row>
+          <ion-col>
+            <ion-button type="submit" expand="block">S'inscrire</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-card-content>
+  </ion-card>
   
   <!-- Register button -->
-  <ion-button [routerLink]="['/login']">
-    Se connecter
-  </ion-button>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Se connecter</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button [routerLink]="['/login']">
+        Connexion
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
