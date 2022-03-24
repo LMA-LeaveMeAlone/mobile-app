@@ -1,17 +1,18 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Enregistrements vidéos
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Enregistrements vidéos</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="title">
+    <h1>Enregistrements vidéos</h1>
+  </div>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <!-- Videos -->
+  <div>
+    <ion-card *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10]">
+      <ion-card-content>
+        <ion-icon name="videocam-outline"></ion-icon>
+        <h2>05/12/2021</h2>
+        <ion-button color="secondary">
+          <ion-icon name="eye-outline"></ion-icon>
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

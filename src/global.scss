@@ -30,12 +30,33 @@
     src: url('assets/fonts/Barlow-Light.ttf');
 }
 
+@font-face {   
+    font-family: 'Barlow bold';
+    src: url('assets/fonts/Barlow-Bold.ttf');
+}
+
 *{
     font-family: 'Barlow', sans-serif;
 }
 
+h1{
+    font-weight: bold;
+}
+
+.title{
+    display: flex;
+    background: var(--ion-color-primary);
+    border-bottom: 0.2em solid;
+
+    h1{
+        color: white;
+        margin-inline: 16px;
+    }
+}
+
 ion-title{
     font-size: 1.5em;
+    margin-top: 8%;
 }
 
 form{

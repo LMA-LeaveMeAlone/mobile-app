@@ -1,17 +1,36 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Gestion de l'entrée
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Gestion de l'entrée</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="title">
+    <h1>Interagir avec la porte</h1>
+  </div>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <!-- Door interaction -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Interagir</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="interaction-card">
+      <ion-button color="secondary">
+        <ion-icon name="ear-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="secondary">
+        <ion-icon name="mic-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="secondary">
+        <ion-icon name="alert-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="secondary">
+        <ion-icon name="alert-outline"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Camera view -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Caméra</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      
+    </ion-card-content>
+  </ion-card>
 </ion-content>

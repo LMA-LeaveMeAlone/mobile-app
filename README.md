@@ -1,3 +1,3 @@
 Couleur de la charte :
 
-https://mediapex.net/charte-graphique?langue=en
+https://mediapex.net/liaisons/images/produits/charte-graphique.jpg

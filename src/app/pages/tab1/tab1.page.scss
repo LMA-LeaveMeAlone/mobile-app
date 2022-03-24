@@ -1,0 +1,10 @@
+.interaction-card{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1em;
+
+    ion-button{
+        width: 70px;
+        height: 70px;
+    }
+}
