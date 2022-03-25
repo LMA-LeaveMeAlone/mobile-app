@@ -4,5 +4,10 @@ export interface User{
   firstName: string;
   userName: string;
   email: string;
-  password?: string;
+  password: string;
+}
+
+export interface LoggedUser{
+  user: User;
+  accessToken: string;
 }

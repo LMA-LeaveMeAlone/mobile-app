@@ -45,12 +45,20 @@ h1{
 
 .title{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: var(--ion-color-primary);
     border-bottom: 0.2em solid;
 
     h1{
         color: white;
         margin-inline: 16px;
+    }
+
+    ion-icon{
+        color: white;
+        font-size: 2em;
+        margin-right: 4%;
     }
 }
 

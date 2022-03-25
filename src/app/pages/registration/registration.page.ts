@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/User';
+import { LoggedUser, User } from '../../models/User';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { alertController } from '@ionic/core';
@@ -26,9 +26,10 @@ export class RegistrationPage implements OnInit {
   }
   submit(){
     if (!this.userName || !this.firstName || !this.lastName || !this.email || !this.password){
-      this.showAlert('Can\'t validate', 'Please provide all required data.');
+      this.showAlert('Champs incomplets', 'Veuillez remplir tous les champs d\'inscription !');
     }
     else{
+      console.log("1 " + this.password);
       const user: User = {
         userName: this.userName,
         lastName: this.lastName,
@@ -36,10 +37,10 @@ export class RegistrationPage implements OnInit {
         email: this.email,
         password: this.password
       };
-      this.userService.createUser(user).subscribe((result) => {
-        this.showAlert('Your account has been registered', `Hello ${result.userName}, you can now log in.`)
+      this.userService.createUser(user).subscribe((result: LoggedUser) => {
+        this.showAlert('Votre compte a été créé', `Bonjour ${result.user.userName}, vous pouvez désormais vous connecter.`)
         .then(() => {
-          this.router.navigate(['login']);
+          this.userService.tryConnect(result.user.email, this.password);
         });
       },
       (err) => {
