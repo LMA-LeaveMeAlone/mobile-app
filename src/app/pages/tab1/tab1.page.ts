@@ -6,7 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  isLighting: boolean = false;
+  microphoneIsEnabled: boolean = false;
+  cameraIsEnabled: boolean = false;
 
   constructor() {}
-
 }

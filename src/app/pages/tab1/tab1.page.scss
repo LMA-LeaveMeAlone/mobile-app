@@ -4,22 +4,27 @@
     font-size: 1em;
 
     ion-button{
-        width: 100px;
-        height: 100px;
+        width: 70px;
+        height: 70px;
 
         ion-icon{
             position: absolute;
-            top: 20%;
+            top: 18%;
         }
         
         p{
             position: absolute;
-            bottom: 20%;
+            bottom: 18%;
         }
     }
 
     .mic{
         --background: #4A5FE8;
+    }
+
+    .cam{
+        color: black;
+        --background: #87FFC7;
     }
 }
 
@@ -27,4 +32,19 @@
     border-radius: 15px;
     border : solid;
     border-color: var(--ion-color-secondary);
+}
+
+ion-card-header{
+    display: flex;
+    align-items: center;
+    gap: 4%;
+
+    div{
+        border-left: 0.2em solid var(--ion-color-tertiary);
+
+        p{
+            font-size: 0.9em;
+            margin-left: 5%;
+        }
+    }
 }

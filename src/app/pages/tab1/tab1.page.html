@@ -13,13 +13,29 @@
         <ion-icon name="ear-outline"></ion-icon>
         <p>Alarme</p>
       </ion-button>
-      <ion-button color="warning">
-        <ion-icon name="flashlight-outline"></ion-icon>
+      <ion-button 
+        color="warning"
+        (click)="this.isLighting = !this.isLighting"
+      >
+        <ion-icon name="flash-outline" *ngIf="isLighting === true"></ion-icon>
+        <ion-icon name="flash-off-outline" *ngIf="isLighting !== true"></ion-icon>
         <p>Lumière</p>
       </ion-button>
-      <ion-button class="mic">
-        <ion-icon name="mic-outline"></ion-icon>
+      <ion-button 
+        class="mic"
+        (click)="this.microphoneIsEnabled = !this.microphoneIsEnabled"
+      >
+        <ion-icon name="mic-outline" *ngIf="microphoneIsEnabled === true"></ion-icon>
+        <ion-icon name="mic-off-outline" *ngIf="microphoneIsEnabled !== true"></ion-icon>
         <p>Parler</p>
+      </ion-button>
+      <ion-button 
+        class="cam"
+        (click)="this.cameraIsEnabled = !this.cameraIsEnabled"
+      >
+        <ion-icon name="eye-outline" *ngIf="cameraIsEnabled === true"></ion-icon>
+        <ion-icon name="eye-off-outline" *ngIf="cameraIsEnabled !== true"></ion-icon>
+        <p>Voir</p>
       </ion-button>
     </ion-card-content>
   </ion-card>
@@ -28,8 +44,11 @@
   <ion-card>
     <ion-card-header>
       <ion-card-title>Caméra</ion-card-title>
+      <div *ngIf="cameraIsEnabled !== true">
+        <p>La caméra est coupée. <br />Activez-la pour avoir un aperçu de ce qu'il se passe devant votre porte.</p>
+      </div>
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content *ngIf="cameraIsEnabled === true">
       <img src="assets/camera.png" alt="Camera preview" class="camera">
     </ion-card-content>
   </ion-card>
