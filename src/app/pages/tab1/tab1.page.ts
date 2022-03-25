@@ -11,4 +11,8 @@ export class Tab1Page {
   cameraIsEnabled: boolean = false;
 
   constructor() {}
+
+  disconnect(){
+    
+  }
 }

@@ -16,7 +16,9 @@ export class RegistrationPage implements OnInit {
   firstName: string;
   email: string;
   password: string;
+  accessToken: string;
   alertController = alertController;
+
   constructor(
     private userService: UserService,
     private router: Router,
@@ -25,7 +27,7 @@ export class RegistrationPage implements OnInit {
   ngOnInit() {
   }
   submit(){
-    if (!this.userName || !this.firstName || !this.lastName || !this.email || !this.password){
+    if (!this.userName || !this.firstName || !this.lastName || !this.email || !this.password || !this.accessToken){
       this.showAlert('Champs incomplets', 'Veuillez remplir tous les champs d\'inscription !');
     }
     else{
