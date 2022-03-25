@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { alertController } from '@ionic/core';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +15,7 @@ export class UserService {
   alertController = alertController;
 
   constructor(
+    public storage: Storage,
     private http: HttpClient,
     private authService: AuthService,
     private router: Router
@@ -38,7 +40,12 @@ export class UserService {
       {
         next:(data) => {
           this.authService.setRefreshToken(data.refreshToken);
-          this.authService.setAccessToken(data.accessToken).then(() => this.router.navigate(['/tabs/tab1']));
+          this.authService.setAccessToken(data.accessToken).then((token) => {
+            console.log("token : " + token);
+            //TO DO
+            //this.storage.set("accessToken", token);
+            this.router.navigate(['/tabs/tab1'])
+          });
         },
         error: (err) => {
           console.log(err);

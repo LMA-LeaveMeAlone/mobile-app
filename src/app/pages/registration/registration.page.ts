@@ -43,7 +43,6 @@ export class RegistrationPage implements OnInit {
       this.userService.createUser(user).subscribe((result: LoggedUser) => {
         this.showAlert('Votre compte a été créé', `Bonjour ${result.user.userName}, vous pouvez désormais vous connecter.`)
         .then(() => {
-          // TODO : Save access token key to storage : result.accessToken
           this.userService.tryConnect(result.user.email, this.password);
         });
       },
