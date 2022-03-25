@@ -5,6 +5,7 @@ export interface User{
   userName: string;
   email: string;
   password: string;
+  digitalKey?: string;
 }
 
 export interface LoggedUser{
