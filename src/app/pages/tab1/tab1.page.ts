@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { ObjectsService } from 'src/app/services/objects.service';
 
 @Component({
   selector: 'app-tab1',
@@ -10,9 +13,20 @@ export class Tab1Page {
   microphoneIsEnabled: boolean = false;
   cameraIsEnabled: boolean = false;
 
-  constructor() {}
+  constructor(
+    private authService: AuthService,
+    private objectsService: ObjectsService,
+    private router: Router
+  ) {}
 
-  disconnect(){
-    
+  async disconnect(){
+    await this.authService.deleteAccessToken();
+    this.objectsService.stopAutoFetchObjectsState();
+    this.router.navigate(['/login'])
+  }
+
+  async toggleLight(){
+    await this.objectsService.toggleLight();
+    //this.isLighting = !this.isLighting;
   }
 }

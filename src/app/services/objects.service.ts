@@ -23,6 +23,10 @@ export class ObjectsService {
     });
   }
 
+  stopAutoFetchObjectsState(){
+    this.autoFetch.unsubscribe();
+  }
+
   fetchObjectsState(){
     this.getObjectsState().subscribe((objects: Objects) => {
       this.objects = objects;
@@ -31,5 +35,13 @@ export class ObjectsService {
 
   getObjectsState(): Observable<Objects>{
     return this.http.get<Objects>(`${this.apiUrl}`);
+  }
+
+  toggleLight(){
+    this.http.put<boolean>(`${this.apiUrl}/spotlight/toggle`, {}).subscribe();
+  }
+
+  toggleAlarm(){
+    this.http.put<boolean>(`${this.apiUrl}/spotlight/alarm`, {}).subscribe();
   }
 }

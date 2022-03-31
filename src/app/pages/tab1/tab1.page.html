@@ -16,7 +16,7 @@
       </ion-button>
       <ion-button 
         color="warning"
-        (click)="this.isLighting = !this.isLighting"
+        (click)="toggleLight()"
       >
         <ion-icon name="flash-outline" *ngIf="isLighting === true"></ion-icon>
         <ion-icon name="flash-off-outline" *ngIf="isLighting !== true"></ion-icon>
