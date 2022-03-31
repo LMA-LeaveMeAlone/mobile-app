@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoggedUser, User } from '../models/User';
+import { LoginUser, RegisterUser } from '../models/User';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { alertController } from '@ionic/core';
+import { ObjectsService } from './objects.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,18 +17,19 @@ export class UserService {
   constructor(
     private http: HttpClient,
     private authService: AuthService,
+    private objectsService: ObjectsService,
     private router: Router
   ) { }
 
-  createUser(user: User): Observable<LoggedUser> {
-    return this.http.post<LoggedUser>(
+  createUser(user: RegisterUser): Observable<LoginUser> {
+    return this.http.post<LoginUser>(
       `${this.apiUrl}/register`,
       user
     );
   }
 
   loginUser(emailOrUserName: string, password: string): Observable<any> {
-    return this.http.post<LoggedUser>(
+    return this.http.post<LoginUser>(
       `${this.apiUrl}/login`,
       { emailOrUserName, password }
     );
@@ -37,8 +39,12 @@ export class UserService {
     this.loginUser(email, password).subscribe(
       {
         next:(data) => {
-          this.authService.setRefreshToken(data.refreshToken);
-          this.authService.setAccessToken(data.accessToken).then(() => this.router.navigate(['/tabs/tab1']));
+          this.authService.setAccessToken(data.accessToken).then(() => {
+            // Begin objects state auto fetch
+            this.objectsService.autoFetchObjectsState();
+            
+            this.router.navigate(['/tabs/tab1'])
+          });
         },
         error: (err) => {
           console.log(err);

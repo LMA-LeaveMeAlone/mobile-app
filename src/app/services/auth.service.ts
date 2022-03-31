@@ -33,12 +33,4 @@ export class AuthService {
   async deleteAccessToken(){
     await Storage.remove({key: 'accessToken'});
   }
-
-  setRefreshToken(token: string){
-    return Storage.set({key:'refreshToken', value: token});
-  }
-  
-  getRefreshToken(){
-    return Storage.get({key:'refreshToken'});
-  }
 }

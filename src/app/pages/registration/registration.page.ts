@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggedUser, User } from '../../models/User';
+import { LoginUser, RegisterUser, User } from '../../models/User';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { alertController } from '@ionic/core';
@@ -16,37 +16,39 @@ export class RegistrationPage implements OnInit {
   firstName: string;
   email: string;
   password: string;
-  accessToken: string;
+  digitalKey: string;
+
   alertController = alertController;
 
   constructor(
-    private userService: UserService,
-    private router: Router,
+    private userService: UserService
     ) { }
 
   ngOnInit() {
   }
   submit(){
-    if (!this.userName || !this.firstName || !this.lastName || !this.email || !this.password || !this.accessToken){
+    if (!this.userName || !this.firstName || !this.lastName || !this.email || !this.password || !this.digitalKey){
       this.showAlert('Champs incomplets', 'Veuillez remplir tous les champs d\'inscription !');
     }
     else{
-      console.log("1 " + this.password);
-      const user: User = {
-        userName: this.userName,
-        lastName: this.lastName,
-        firstName: this.firstName,
-        email: this.email,
-        password: this.password
+      const user: RegisterUser = {
+        user: {
+          userName: this.userName,
+          lastName: this.lastName,
+          firstName: this.firstName,
+          email: this.email,
+          password: this.password
+        },
+        digitalKey: this.digitalKey
       };
-      this.userService.createUser(user).subscribe((result: LoggedUser) => {
+      this.userService.createUser(user).subscribe((result: LoginUser) => {
         this.showAlert('Votre compte a été créé', `Bonjour ${result.user.userName}, vous pouvez désormais vous connecter.`)
         .then(() => {
           this.userService.tryConnect(result.user.email, this.password);
         });
       },
       (err) => {
-        this.showAlert('Can\'t create your account', err.error);
+        this.showAlert('Impossible de créer votre compte', err.error);
       }
       );
     }
