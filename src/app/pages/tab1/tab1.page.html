@@ -10,16 +10,20 @@
       <ion-card-title>Interagir</ion-card-title>
     </ion-card-header>
     <ion-card-content class="interaction-card">
-      <ion-button color="danger">
-        <ion-icon name="ear-outline"></ion-icon>
+      <ion-button 
+        color="danger"
+        (click)="toggleAlarm()"
+      >
+        <ion-icon name="notifications-outline" *ngIf="isAlarming() === true"></ion-icon>
+        <ion-icon name="notifications-off-outline" *ngIf="isAlarming() !== true"></ion-icon>
         <p>Alarme</p>
       </ion-button>
       <ion-button 
         color="warning"
         (click)="toggleLight()"
       >
-        <ion-icon name="flash-outline" *ngIf="isLighting === true"></ion-icon>
-        <ion-icon name="flash-off-outline" *ngIf="isLighting !== true"></ion-icon>
+        <ion-icon name="flash-outline" *ngIf="isLighting() === true"></ion-icon>
+        <ion-icon name="flash-off-outline" *ngIf="isLighting() !== true"></ion-icon>
         <p>Lumière</p>
       </ion-button>
       <ion-button 

@@ -38,10 +38,10 @@ export class ObjectsService {
   }
 
   toggleLight(){
-    this.http.put<boolean>(`${this.apiUrl}/spotlight/toggle`, {}).subscribe();
+    this.http.put<Objects>(`${this.apiUrl}/spotlight/toggle`, {}).subscribe((result) => this.objects.spotlight = result.spotlight);
   }
 
   toggleAlarm(){
-    this.http.put<boolean>(`${this.apiUrl}/spotlight/alarm`, {}).subscribe();
+    this.http.put<Objects>(`${this.apiUrl}/alarm/toggle`, {}).subscribe((result) => this.objects.alarm = result.alarm);
   }
 }

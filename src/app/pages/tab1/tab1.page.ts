@@ -9,7 +9,6 @@ import { ObjectsService } from 'src/app/services/objects.service';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  isLighting: boolean = false;
   microphoneIsEnabled: boolean = false;
   cameraIsEnabled: boolean = false;
 
@@ -27,6 +26,17 @@ export class Tab1Page {
 
   async toggleLight(){
     await this.objectsService.toggleLight();
-    //this.isLighting = !this.isLighting;
+  }
+
+  isLighting(): boolean{
+    return this.objectsService.objects.spotlight;
+  }
+
+  async toggleAlarm(){
+    await this.objectsService.toggleAlarm();
+  }
+
+  isAlarming(): boolean{
+    return this.objectsService.objects.alarm;
   }
 }
