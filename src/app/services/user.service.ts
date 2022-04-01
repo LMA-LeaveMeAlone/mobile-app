@@ -42,13 +42,13 @@ export class UserService {
           this.authService.setAccessToken(data.accessToken).then(() => {
             // Begin objects state auto fetch
             this.objectsService.autoFetchObjectsState();
-            
+
             this.router.navigate(['/tabs/tab1'])
           });
         },
         error: (err) => {
           console.log(err);
-        this.showAlert('Can\'t connect to your account.', err.error);
+          this.showAlert('Can\'t connect to your account.', JSON.stringify(err.error));
       }
     });
   }
