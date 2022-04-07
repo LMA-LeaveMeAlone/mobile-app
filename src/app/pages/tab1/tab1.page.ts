@@ -29,7 +29,7 @@ export class Tab1Page {
   }
 
   isLighting(): boolean{
-    return this.objectsService.objects.spotlight;
+    return this.objectsService.objects?.spotlight || false;
   }
 
   async toggleAlarm(){
@@ -37,6 +37,6 @@ export class Tab1Page {
   }
 
   isAlarming(): boolean{
-    return this.objectsService.objects.alarm;
+    return this.objectsService.objects?.alarm || false;
   }
 }

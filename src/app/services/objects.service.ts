@@ -38,7 +38,9 @@ export class ObjectsService {
   }
 
   toggleLight(){
-    this.http.put<Objects>(`${this.apiUrl}/spotlight/toggle`, {}).subscribe((result) => this.objects.spotlight = result.spotlight);
+    this.http.put<Objects>(`${this.apiUrl}/spotlight/toggle`, {}).subscribe((result) =>{
+      this.objects.spotlight = result.spotlight;
+    });
   }
 
   toggleAlarm(){
