@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { ObjectsService } from 'src/app/services/objects.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-tab1',
@@ -37,7 +38,7 @@ export class Tab1Page {
     setTimeout(async ()=>{ 
       await this.objectsService.toggleAlarm();
       this.btnAlarmDisabled = false;
-    }, 800)
+    }, environment.timeBetweenObjectsActivation)
     this.btnAlarmDisabled = true;
   }
 
