@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>modal-video</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<video controls>
+  <source src="{{video.url}}"
+          type="video/mp4">
+</video>
+
+<ion-content>
+  <div>
+    <ion-icon name="chevron-down-circle-outline" 
+    (click)="closeModal()">
+    </ion-icon>
+  </div>
+</ion-content>

@@ -17,7 +17,11 @@ const routes: Routes = [
   {
     path: 'registration',
     loadChildren: () => import('./pages/registration/registration.module').then( m => m.RegistrationPageModule)
+  },  {
+    path: 'modal-video',
+    loadChildren: () => import('./pages/modal-video/modal-video.module').then( m => m.ModalVideoPageModule)
   }
+
 ];
 @NgModule({
   imports: [
