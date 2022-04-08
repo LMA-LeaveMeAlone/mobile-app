@@ -19,6 +19,11 @@ export class Tab2Page {
       date: "05/12/2002",
       url: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
       message: "Asticot"
+    },
+    {
+      date: "05/12/2002",
+      url: "https://s48.notube.io/download.php?token=edd94ad0e7dcef522bfcc06bb3b4b14e",
+      message: "Asticot"
     }
   ];
 
