@@ -13,6 +13,7 @@
       <ion-button 
         color="danger"
         (click)="toggleAlarm()"
+        [class.button-disabled]="btnAlarmDisabled"
       >
         <ion-icon name="notifications-outline" *ngIf="isAlarming() === true"></ion-icon>
         <ion-icon name="notifications-off-outline" *ngIf="isAlarming() !== true"></ion-icon>

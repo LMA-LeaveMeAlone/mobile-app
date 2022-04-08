@@ -11,6 +11,7 @@ import { ObjectsService } from 'src/app/services/objects.service';
 export class Tab1Page {
   microphoneIsEnabled: boolean = false;
   cameraIsEnabled: boolean = false;
+  btnAlarmDisabled = false;
 
   constructor(
     private authService: AuthService,
@@ -33,7 +34,11 @@ export class Tab1Page {
   }
 
   async toggleAlarm(){
-    await this.objectsService.toggleAlarm();
+    setTimeout(async ()=>{ 
+      await this.objectsService.toggleAlarm();
+      this.btnAlarmDisabled = false;
+    }, 800)
+    this.btnAlarmDisabled = true;
   }
 
   isAlarming(): boolean{
