@@ -23,12 +23,6 @@ export class Tab2Page {
   }
 
   async openVideo(video: Video) {
-    const modal = await this.modalCtrl.create({
-      component: ModalVideoPage,
-      componentProps: {
-        video: video
-      }
-    });
-    return await modal.present()
+    return this.videosService.openVideo(this.modalCtrl, video);
   }
 }
