@@ -18,7 +18,7 @@ export class Tab2Page {
     private videosService: VideosService
   ) {
     videosService.getRecords().subscribe((videos: Video[]) => {
-      this.videos = videos;
+      this.videos = videos.reverse();
     });
   }
 

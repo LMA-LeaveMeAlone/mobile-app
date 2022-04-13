@@ -8,7 +8,7 @@
     <ion-card *ngFor="let video of videos">
       <ion-card-content>
         <ion-icon name="videocam-outline"></ion-icon>
-        <h2>{{video.datetime}}</h2>
+        <h2>{{video.datetime | date:'dd/MM/yyyy hh:mm:ss'}}</h2>
         <ion-button color="secondary" (click)="openVideo(video)">
           <ion-icon name="eye-outline"></ion-icon>
         </ion-button>
