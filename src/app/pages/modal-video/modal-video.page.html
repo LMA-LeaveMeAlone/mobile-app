@@ -1,11 +1,9 @@
 <ion-content>
-  <video controls>
-    <source src="{{video.url}}"
-            type="video/mp4">
+  <video height="240" controls autoplay>
+    <source src="{{video.url}}" type="video/mp4">
   </video>
   <div>
-    <ion-icon name="chevron-down-circle-outline" 
-    (click)="closeModal()">
+    <ion-icon name="chevron-down-circle-outline" (click)="closeModal()">
     </ion-icon>
   </div>
 </ion-content>
