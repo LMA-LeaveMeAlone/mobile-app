@@ -34,6 +34,15 @@
     border-color: var(--ion-color-primary);
 }
 
+.signal {
+    position: absolute;
+    width: 1.2em;
+    height: 1.2em;
+    border-radius: 100%;
+    right: 10px;
+    top: 10px;
+}
+
 ion-card-header{
     display: flex;
     align-items: center;
@@ -47,4 +56,8 @@ ion-card-header{
             margin-left: 5%;
         }
     }
+}
+
+video{
+    border-radius: 7px;
 }

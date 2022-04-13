@@ -18,31 +18,31 @@ export class Tab1Page {
     private authService: AuthService,
     private objectsService: ObjectsService,
     private router: Router
-  ) {}
+  ) { }
 
-  async disconnect(){
+  async disconnect() {
     await this.authService.deleteAccessToken();
     this.objectsService.stopAutoFetchObjectsState();
     this.router.navigate(['/login'])
   }
 
-  async toggleLight(){
+  async toggleLight() {
     await this.objectsService.toggleLight();
   }
 
-  isLighting(): boolean{
+  isLighting(): boolean {
     return this.objectsService.objects?.spotlight || false;
   }
 
-  async toggleAlarm(){
-    setTimeout(async ()=>{ 
+  async toggleAlarm() {
+    setTimeout(async () => {
       await this.objectsService.toggleAlarm();
       this.btnAlarmDisabled = false;
     }, environment.timeBetweenObjectsActivation)
     this.btnAlarmDisabled = true;
   }
 
-  isAlarming(): boolean{
+  isAlarming(): boolean {
     return this.objectsService.objects?.alarm || false;
   }
 }
