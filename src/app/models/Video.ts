@@ -1,5 +1,5 @@
-export interface Objects{
-  spotlight: boolean,
-  alarm: boolean,
-  movement: boolean
+export interface Video {
+  datetime: string,
+  url: string,
+  message: string
 }

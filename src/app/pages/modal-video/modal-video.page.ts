@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Video } from 'src/app/models/Objects';
+import { Video } from 'src/app/models/Video';
 
 @Component({
   selector: 'app-modal-video',
@@ -12,9 +12,9 @@ export class ModalVideoPage {
 
   constructor(public modalCtrl: ModalController) { }
 
-  closeModal(){
-    this.modalCtrl.dismiss({    
-      'dismissed': true  
+  closeModal() {
+    this.modalCtrl.dismiss({
+      'dismissed': true
     });
   }
 }

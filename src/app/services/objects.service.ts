@@ -2,20 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { interval, Observable, Subscription } from 'rxjs';
-import { Objects } from '../models/Video';
+import { Objects } from '../models/Objects';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ObjectsService {
-  private apiUrl = `http://${ environment.serverIp }:${ environment.port }/leavemealone/object`;
+  private apiUrl = `http://${environment.serverIp}:${environment.port}/leavemealone/object`;
 
   autoFetch: Subscription;
   objects: Objects;
 
   constructor(private http: HttpClient) { }
 
-  autoFetchObjectsState(){
+  autoFetchObjectsState() {
     this.fetchObjectsState();
 
     this.autoFetch = interval(environment.timeBetweenFetchObjectsState).subscribe(() => {
@@ -23,27 +23,27 @@ export class ObjectsService {
     });
   }
 
-  stopAutoFetchObjectsState(){
+  stopAutoFetchObjectsState() {
     this.autoFetch.unsubscribe();
   }
 
-  fetchObjectsState(){
+  fetchObjectsState() {
     this.getObjectsState().subscribe((objects: Objects) => {
       this.objects = objects;
     });
   }
 
-  getObjectsState(): Observable<Objects>{
+  getObjectsState(): Observable<Objects> {
     return this.http.get<Objects>(`${this.apiUrl}`);
   }
 
-  toggleLight(){
-    this.http.put<Objects>(`${this.apiUrl}/spotlight/toggle`, {}).subscribe((result) =>{
+  toggleLight() {
+    this.http.put<Objects>(`${this.apiUrl}/spotlight/toggle`, {}).subscribe((result) => {
       this.objects.spotlight = result.spotlight;
     });
   }
 
-  toggleAlarm(){
+  toggleAlarm() {
     this.http.put<Objects>(`${this.apiUrl}/alarm/toggle`, {}).subscribe((result) => this.objects.alarm = result.alarm);
   }
 }
