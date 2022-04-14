@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Video } from 'src/app/models/Video';
 import { SwiperComponent } from 'swiper/angular';
-import SwiperCore, { Pagination, SwiperOptions } from 'swiper';
+import SwiperCore, { Pagination } from 'swiper';
 import { VideosService } from 'src/app/services/videos.service';
 
 SwiperCore.use([Pagination]);

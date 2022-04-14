@@ -5,11 +5,11 @@
 
   <!-- Videos -->
   <div class="content">
-    <ion-card *ngFor="let video of videos">
-      <ion-card-content>
+    <ion-card *ngFor="let video of videos; let i = index">
+      <ion-card-content [ngStyle]="{'background-color': glowIndex === i ? '#F5F3CE' : ''}">
         <ion-icon name="videocam-outline"></ion-icon>
         <h2>{{video.datetime | date:'dd/MM/yyyy hh:mm:ss'}}</h2>
-        <ion-button color="secondary" (click)="openVideo(video)">
+        <ion-button color="primary" (click)="openVideo(video)">
           <ion-icon name="eye-outline"></ion-icon>
         </ion-button>
       </ion-card-content>

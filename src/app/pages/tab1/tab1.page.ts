@@ -1,8 +1,14 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, ViewChild } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { ObjectsService } from 'src/app/services/objects.service';
 import { environment } from 'src/environments/environment';
+import { SwiperComponent } from 'swiper/angular';
+import SwiperCore, { Pagination } from 'swiper';
+import { Video } from 'src/app/models/Video';
+import { VideosService } from 'src/app/services/videos.service';
+
+SwiperCore.use([Pagination]);
 
 @Component({
   selector: 'app-tab1',
@@ -10,15 +16,24 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  @ViewChild('swiper', { static: true }) swiper: SwiperComponent;
+
   microphoneIsEnabled: boolean = false;
   cameraIsEnabled: boolean = false;
   btnAlarmDisabled = false;
 
+  recents: Video[];
+
   constructor(
     private authService: AuthService,
     private objectsService: ObjectsService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private videosService: VideosService
+  ) {
+    videosService.getRecords().subscribe((videos: Video[]) => {
+      this.recents = videos.reverse();
+    });
+  }
 
   async disconnect() {
     await this.authService.deleteAccessToken();
@@ -44,5 +59,15 @@ export class Tab1Page {
 
   isAlarming(): boolean {
     return this.objectsService.objects?.alarm || false;
+  }
+
+  showVideo(glowIndex: number) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        videos: JSON.stringify(this.recents),
+        glowIndex: JSON.stringify(glowIndex)
+      }
+    };
+    this.router.navigate(['/tabs/tab2'], navigationExtras)
   }
 }
