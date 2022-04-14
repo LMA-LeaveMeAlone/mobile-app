@@ -1,3 +1,23 @@
-Couleur de la charte :
+# mobile-app
 
-https://mediapex.net/liaisons/images/produits/charte-graphique.jpg
+This application work with [the server](https://github.com/LMA-LeaveMeAlone/server).
+
+## Installation
+
+Installation of dependencies :
+
+```
+npm i
+```
+
+Web browser run
+
+```
+ionic serve
+```
+  
+Android build
+
+```
+ionic cap sync android
+```
