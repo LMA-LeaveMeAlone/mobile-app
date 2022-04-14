@@ -58,17 +58,22 @@
       <ion-card-title>Dernières activités</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <swiper [slidesPerView]=2.5 [spaceBetween]=10 #swiper>
-        <ng-template swiperSlide *ngFor="let r of recents | slice:0:5; let i = index">
-          <div class="info-card" (click)="showVideo(i)">
-            <p class="entity">{{ r.message }}</p>
-            <p>
-              {{ r.datetime | date:'dd/MM/yyyy'}}<br>
-              {{ r.datetime | date:'hh:mm:ss'}}
-            </p>
-          </div>
-        </ng-template>
-      </swiper>
+      <div *ngIf="recents">
+        <swiper [slidesPerView]=2.5 [spaceBetween]=10 #swiper>
+          <ng-template swiperSlide *ngFor="let r of recents | slice:0:5; let i = index">
+            <div class="info-card" (click)="showVideo(i)">
+              <p class="entity">{{ r.message }}</p>
+              <p>
+                {{ r.datetime | date:'dd/MM/yyyy'}}<br>
+                {{ r.datetime | date:'hh:mm:ss'}}
+              </p>
+            </div>
+          </ng-template>
+        </swiper>
+      </div>
+      <div *ngIf="!recents">
+        <p>Aucune entité n'a été détecté pour le moment.</p>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>
