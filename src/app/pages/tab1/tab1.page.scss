@@ -6,6 +6,10 @@
     ion-button{
         width: 70px;
         height: 70px;
+        border: 3px solid var(--ion-color-primary);
+        border-radius: 15px;
+        --background: none !important;
+        color: black;
 
         ion-icon{
             position: absolute;
@@ -16,15 +20,6 @@
             position: absolute;
             bottom: 18%;
         }
-    }
-
-    .mic{
-        --background: #4A5FE8;
-    }
-
-    .cam{
-        color: black;
-        --background: #87FFC7;
     }
 }
 
@@ -43,7 +38,7 @@ ion-card-header{
     gap: 4%;
 
     div{
-        border-left: 0.2em solid var(--ion-color-tertiary);
+        border-left: 0.2em solid var(--ion-color-primary);
 
         p{
             font-size: 0.9em;
