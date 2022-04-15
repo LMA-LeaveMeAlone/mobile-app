@@ -5,10 +5,10 @@
   </div>
 
   <!-- Door interaction -->
+  <div class="card-title">
+    <p>Interagir</p>
+  </div>
   <ion-card>
-    <ion-card-header>
-      <ion-card-title>Interagir</ion-card-title>
-    </ion-card-header>
     <ion-card-content class="interaction-card">
       <ion-button (click)="toggleAlarm()" [class.button-disabled]="btnAlarmDisabled">
         <ion-icon name="notifications-outline" *ngIf="isAlarming() === true"></ion-icon>
@@ -34,16 +34,16 @@
   </ion-card>
 
   <!-- Camera view -->
+  <div class="card-title">
+    <p>Caméra</p>
+  </div>
   <ion-card>
     <div class="signal"
       [ngStyle]="{'background-color': cameraIsEnabled === true ? 'var(--ion-color-success)' : 'var(--ion-color-danger)' }">
     </div>
-    <ion-card-header>
-      <ion-card-title>Caméra</ion-card-title>
-      <div *ngIf="cameraIsEnabled !== true">
-        <p>La caméra est coupée. <br />Activez-la pour avoir un aperçu de ce qu'il se passe devant votre porte.</p>
-      </div>
-    </ion-card-header>
+    <div class="card-text" *ngIf="cameraIsEnabled !== true">
+      <p>La caméra est coupée. <br />Activez-la pour avoir un aperçu de ce qu'il se passe devant votre porte.</p>
+    </div>
     <ion-card-content *ngIf="cameraIsEnabled === true">
       <video width="100%" autoplay playsinline style="pointer-events: none;" loop>
         <source src="https://aws-lma-video-records.s3.eu-west-3.amazonaws.com/house_id_1/2022_4_8_14_39_4.mp4"
@@ -53,10 +53,10 @@
   </ion-card>
 
   <!-- Recents activity -->
+  <div class="card-title">
+    <p>Dernières activités</p>
+  </div>
   <ion-card>
-    <ion-card-header>
-      <ion-card-title>Dernières activités</ion-card-title>
-    </ion-card-header>
     <ion-card-content>
       <div *ngIf="recents">
         <swiper [slidesPerView]=2.5 [spaceBetween]=10 #swiper>

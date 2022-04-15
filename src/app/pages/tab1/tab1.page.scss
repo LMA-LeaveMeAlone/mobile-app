@@ -30,6 +30,12 @@
     border-radius: 100%;
     right: 10px;
     top: 10px;
+    z-index: 1;
+}
+
+.card-text{
+    font-size: 0.9em;
+    margin-left: 5%;
 }
 
 ion-card-header{
