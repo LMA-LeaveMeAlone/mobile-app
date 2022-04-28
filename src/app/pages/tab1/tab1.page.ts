@@ -22,24 +22,9 @@ export class Tab1Page {
   cameraIsEnabled: boolean = false;
   btnAlarmDisabled = false;
 
-  recents: Video[];
-
   constructor(
-    private authService: AuthService,
     private objectsService: ObjectsService,
-    private router: Router,
-    private videosService: VideosService
-  ) {
-    videosService.getRecords().subscribe((videos: Video[]) => {
-      this.recents = videos.reverse();
-    });
-  }
-
-  async disconnect() {
-    await this.authService.deleteAccessToken();
-    this.objectsService.stopAutoFetchObjectsState();
-    this.router.navigate(['/login'])
-  }
+  ) {}
 
   async toggleLight() {
     await this.objectsService.toggleLight();
@@ -59,15 +44,5 @@ export class Tab1Page {
 
   isAlarming(): boolean {
     return this.objectsService.objects?.alarm || false;
-  }
-
-  showVideo(glowIndex: number) {
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-        videos: JSON.stringify(this.recents),
-        glowIndex: JSON.stringify(glowIndex)
-      }
-    };
-    this.router.navigate(['/tabs/tab2'], navigationExtras)
   }
 }

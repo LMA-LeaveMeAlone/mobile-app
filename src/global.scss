@@ -48,24 +48,6 @@ h1{
     font-weight: bold;
 }
 
-.title{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--ion-color-secondary);
-
-    h1{
-        color: white;
-        margin-inline: 16px;
-    }
-
-    ion-icon{
-        color: white;
-        font-size: 2em;
-        margin-right: 4%;
-    }
-}
-
 ion-title{
     font-size: 1.5em;
     margin-top: 8%;
@@ -83,7 +65,7 @@ ion-card{
 
 .card-title{
     margin-inline: 16px;
-    width: 60%;
+    width: 50%;
     text-align: center;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -93,7 +75,6 @@ ion-card{
     p{
         font-weight: bold;
         font-size: 1.3em;
-        margin-left: 4%;
         padding-bottom: 8%;
         padding-top: 8%;
     }
