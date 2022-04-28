@@ -48,7 +48,7 @@
       <swiper [slidesPerView]=1.5 [spaceBetween]=10 #swiper>
         <ng-template swiperSlide *ngFor="let r of recommandations | slice:0:5">
           <div (click)="openVideo(r)">
-            <video width="100%" autoplay playsinline style="pointer-events: none;">
+            <video width="100%" playsinline style="pointer-events: none;">
               <source src="{{r.url}}" type="video/mp4">
             </video>
           </div>
