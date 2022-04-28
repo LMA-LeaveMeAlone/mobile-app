@@ -23,8 +23,10 @@ export class RecentsComponent {
     ) {
       videosService.getRecords().subscribe((videos: Video[]) => {
         this.recommandations = videos.reverse();
-        if(this.ignoredVideo)
-          this.recommandations.filter((video) => video._id != this.ignoredVideo._id);
+        if(this.ignoredVideo){
+          console.log(this.ignoredVideo);
+          this.recommandations = this.recommandations.filter((video) => video._id != this.ignoredVideo._id);
+        }
       });
   }
 
