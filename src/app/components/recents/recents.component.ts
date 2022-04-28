@@ -22,7 +22,9 @@ export class RecentsComponent {
     public modalCtrl: ModalController
     ) {
       videosService.getRecords().subscribe((videos: Video[]) => {
-        this.recommandations = videos.reverse().filter((video) => video._id != this.ignoredVideo._id);
+        this.recommandations = videos.reverse();
+        if(this.ignoredVideo)
+          this.recommandations.filter((video) => video._id != this.ignoredVideo._id);
       });
   }
 

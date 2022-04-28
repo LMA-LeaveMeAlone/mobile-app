@@ -6,6 +6,7 @@ import { Tab1Page } from './tab1.page';
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { SwiperModule } from 'swiper/angular';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { SwiperModule } from 'swiper/angular';
     CommonModule,
     FormsModule,
     Tab1PageRoutingModule,
-    SwiperModule
+    SwiperModule,
+    ComponentsModule
   ],
   declarations: [Tab1Page]
 })

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverIp: '192.168.43.254',
+  serverIp: 'localhost',//'192.168.43.254',
   port: '3000',
   timeBetweenFetchObjectsState: 10000,
   timeBetweenObjectsActivation: 800
