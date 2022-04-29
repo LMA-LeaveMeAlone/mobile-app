@@ -8,7 +8,6 @@ import {
   PushNotificationToken,
   PushNotificationActionPerformed
 } from '@capacitor/push-notifications';
-import { Router } from '@angular/router';
 
 const { PushNotifications } = Plugins;
 
@@ -17,7 +16,7 @@ const { PushNotifications } = Plugins;
 })
 export class FcmService {
 
-  constructor(private router: Router) {}
+  constructor() {}
 
   initPush() {
     if (Capacitor.platform !== 'web') {
