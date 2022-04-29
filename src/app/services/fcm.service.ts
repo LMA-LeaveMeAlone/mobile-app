@@ -17,23 +17,25 @@ export class FcmService implements OnInit {
   constructor() {}
 
   ngOnInit(){
-    PushNotifications.requestPermissions().then((permission) =>{
-      if(permission.receive === 'granted'){
-        PushNotifications.register();
-      }
-    });
+    if (Capacitor.getPlatform() !== 'web') {
+      PushNotifications.requestPermissions().then((permission) =>{
+        if(permission.receive === 'granted'){
+          PushNotifications.register();
+        }
+      });
 
-    PushNotifications.addListener('registration', (token: Token) =>{
-      console.log('Push registration success, token ' + token.value);
-    });
+      PushNotifications.addListener('registration', (token: Token) =>{
+        console.log('Push registration success, token ' + token.value);
+      });
 
-    PushNotifications.addListener('pushNotificationReceived', (notification: PushNotificationSchema) =>{
+      PushNotifications.addListener('pushNotificationReceived', (notification: PushNotificationSchema) =>{
 
-      console.log('Push received, notification ' + JSON.stringify(notification));
-    });
+        console.log('Push received, notification ' + JSON.stringify(notification));
+      });
 
-    PushNotifications.addListener('pushNotificationActionPerformed', (action: ActionPerformed) =>{
-      console.log('Push action performed, action ' + JSON.stringify(action));
-    });
+      PushNotifications.addListener('pushNotificationActionPerformed', (action: ActionPerformed) =>{
+        console.log('Push action performed, action ' + JSON.stringify(action));
+      });
+    }
   }
 }

@@ -22,7 +22,7 @@
         <ion-icon name="mic-off-outline" *ngIf="microphoneIsEnabled !== true"></ion-icon>
         <p>Parler</p>
       </ion-button>
-      <ion-button (click)="this.cameraIsEnabled = !this.cameraIsEnabled">
+      <ion-button (click)="enableCamera()">
         <ion-icon name="eye-outline" *ngIf="cameraIsEnabled === true"></ion-icon>
         <ion-icon name="eye-off-outline" *ngIf="cameraIsEnabled !== true"></ion-icon>
         <p>Voir</p>
@@ -54,4 +54,7 @@
     <p>Dernières activités</p>
   </div>
   <app-recents></app-recents>
+
+  <img src={{dataBuffer}} alt="">
+
 </ion-content>
