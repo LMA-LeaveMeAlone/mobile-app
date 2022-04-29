@@ -10,12 +10,12 @@ import { ModalVideoPage } from '../pages/modal-video/modal-video.page';
   providedIn: 'root'
 })
 export class VideosService {
-  private apiUrl = `http://${environment.serverIp}:${environment.port}/leavemealone/record`;
+  private apiUrl = `:${environment.port}/leavemealone/record`;
 
   constructor(private http: HttpClient) { }
 
   getRecords(): Observable<Video[]> {
-    return this.http.get<Video[]>(`${this.apiUrl}`);
+    return this.http.get<Video[]>(`http://${ environment.serverIp }${this.apiUrl}`);
   }
 
   async openVideo(modalCtrl: ModalController, video: Video) {

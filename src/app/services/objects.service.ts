@@ -8,7 +8,7 @@ import { Objects } from '../models/Objects';
   providedIn: 'root'
 })
 export class ObjectsService {
-  private apiUrl = `http://${environment.serverIp}:${environment.port}/leavemealone/object`;
+  private apiUrl = `:${environment.port}/leavemealone/object`;
 
   autoFetch: Subscription;
   objects: Objects;
@@ -34,16 +34,16 @@ export class ObjectsService {
   }
 
   getObjectsState(): Observable<Objects> {
-    return this.http.get<Objects>(`${this.apiUrl}`);
+    return this.http.get<Objects>(`http://${ environment.serverIp }${this.apiUrl}`);
   }
 
   toggleLight() {
-    this.http.put<Objects>(`${this.apiUrl}/spotlight/toggle`, {}).subscribe((result) => {
+    this.http.put<Objects>(`http://${ environment.serverIp }${this.apiUrl}/spotlight/toggle`, {}).subscribe((result) => {
       this.objects.spotlight = result.spotlight;
     });
   }
 
   toggleAlarm() {
-    this.http.put<Objects>(`${this.apiUrl}/alarm/toggle`, {}).subscribe((result) => this.objects.alarm = result.alarm);
+    this.http.put<Objects>(`http://${ environment.serverIp }${this.apiUrl}/alarm/toggle`, {}).subscribe((result) => this.objects.alarm = result.alarm);
   }
 }

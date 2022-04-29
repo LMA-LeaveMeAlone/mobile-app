@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = `http://${ environment.serverIp }:${ environment.port }`;
+  private apiUrl = `:${ environment.port }`;
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +19,7 @@ export class AuthService {
       authorization: 'Bearer ' + token
       }
     );
-    return this.http.get(`${this.apiUrl}/refreshToken`, {headers});
+    return this.http.get(`http://${ environment.serverIp }${this.apiUrl}/refreshToken`, {headers});
   }
 
   setAccessToken(token: string){

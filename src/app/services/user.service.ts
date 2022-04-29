@@ -7,12 +7,14 @@ import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { alertController } from '@ionic/core';
 import { ObjectsService } from './objects.service';
+import { Storage } from '@capacitor/storage';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = `http://${ environment.serverIp }:${ environment.port }/leavemealone/user`;
+  private apiUrl = `:${ environment.port }/leavemealone/user`;
   alertController = alertController;
+  static ip: string;
 
   constructor(
     private http: HttpClient,
@@ -21,16 +23,28 @@ export class UserService {
     private router: Router
   ) { }
 
+  static saveIp(ipAddress: string){
+    UserService.ip = ipAddress;
+    return Storage.set({key:'ip', value: UserService.ip});
+  }
+
+  static getIp(){
+    Storage.get({key:'ip'}).then((result) => {
+      UserService.ip = result.value;
+      return UserService.ip ? UserService.ip : '';
+    });
+  }
+
   createUser(user: RegisterUser): Observable<LoginUser> {
     return this.http.post<LoginUser>(
-      `${this.apiUrl}/register`,
+      `http://${ environment.serverIp }${this.apiUrl}/register`,
       user
     );
   }
 
   loginUser(emailOrUserName: string, password: string): Observable<any> {
     return this.http.post<LoginUser>(
-      `${this.apiUrl}/login`,
+      `http://${ environment.serverIp }${this.apiUrl}/login`,
       { emailOrUserName, password }
     );
   }
@@ -48,7 +62,7 @@ export class UserService {
         },
         error: (err) => {
           console.log(err);
-          this.showAlert('Can\'t connect to your account.', JSON.stringify(err.error));
+          this.showAlert('Can\'t connect to your account.', 'La connexion au wifi a échoué');
       }
     });
   }
