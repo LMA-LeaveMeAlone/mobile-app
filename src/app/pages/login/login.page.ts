@@ -13,23 +13,22 @@ export class LoginPage implements OnInit {
   password: string;
   ip: string;
 
+  envIp: string;
+
   constructor(
     private userService: UserService
-    ) { }
+  ) {}
 
-  ngOnInit() {}
+  async ngOnInit(){
+    this.envIp = await this.userService.loadIp();
+  }
 
   submit(){
     if (!this.emailOrUserName || !this.password || !this.ip){
       this.userService.showAlert('Can\'t validate', 'Please provide all required data.');
       return;
     }
-    //UserService.saveIp(this.ip);
-    environment.serverIp = this.ip;
+    this.userService.saveIp(this.ip);
     this.userService.tryConnect(this.emailOrUserName, this.password);
-  }
-
-  getIp(){
-    //return UserService.getIp();
   }
 }

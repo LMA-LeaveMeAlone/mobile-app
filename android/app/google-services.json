@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "255858445589",
-    "project_id": "leavemealone-ed5c1",
-    "storage_bucket": "leavemealone-ed5c1.appspot.com"
+    "project_number": "389630932925",
+    "firebase_url": "https://whoisit-475bd-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "whoisit-475bd",
+    "storage_bucket": "whoisit-475bd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:255858445589:android:7d7a1cfaf916b2fc376d1c",
+        "mobilesdk_app_id": "1:389630932925:android:52dbe2a18dccac3e6184d4",
         "android_client_info": {
-          "package_name": "com.lpiotia.lma"
+          "package_name": "com.lpiotia.whoisit"
         }
       },
       "oauth_client": [
         {
-          "client_id": "255858445589-fmtbdc5ucfm7gqv0dtgd5t3rv7m5oug4.apps.googleusercontent.com",
+          "client_id": "389630932925-scl9dv1rq6t15eeu3l7fi19h0sn19fdh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBLToP2pff5dY6BeknKcZ16kthFvVDcDq4"
+          "current_key": "AIzaSyAW4eoULEZZHrOK2tr_DCokc-h2NQthn_U"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "255858445589-fmtbdc5ucfm7gqv0dtgd5t3rv7m5oug4.apps.googleusercontent.com",
+              "client_id": "389630932925-scl9dv1rq6t15eeu3l7fi19h0sn19fdh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

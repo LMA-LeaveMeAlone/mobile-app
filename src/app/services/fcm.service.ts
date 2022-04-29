@@ -1,66 +1,39 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import {
-  Plugins,
   Capacitor
 } from '@capacitor/core';
 import {
-  PushNotification,
-  PushNotificationToken,
-  PushNotificationActionPerformed
+  ActionPerformed,
+  PushNotificationSchema,
+  PushNotifications,
+  Token
 } from '@capacitor/push-notifications';
-
-const { PushNotifications } = Plugins;
 
 @Injectable({
   providedIn: 'root'
 })
-export class FcmService {
+export class FcmService implements OnInit {
 
   constructor() {}
 
-  initPush() {
-    if (Capacitor.platform !== 'web') {
-      this.registerPush();
-    }
-  }
- 
-  private registerPush() {
-    PushNotifications.requestPermission().then((permission) => {
-      if (permission.granted) {
-        // Register with Apple / Google to receive push via APNS/FCM
+  ngOnInit(){
+    PushNotifications.requestPermissions().then((permission) =>{
+      if(permission.receive === 'granted'){
         PushNotifications.register();
-      } else {
-        // No permission for push granted
       }
     });
- 
-    PushNotifications.addListener(
-      'registration',
-      (token: PushNotificationToken) => {
-        console.log('My token: ' + JSON.stringify(token));
-      }
-    );
- 
-    PushNotifications.addListener('registrationError', (error: any) => {
-      console.log('Error: ' + JSON.stringify(error));
+
+    PushNotifications.addListener('registration', (token: Token) =>{
+      console.log('Push registration success, token ' + token.value);
     });
- 
-    PushNotifications.addListener(
-      'pushNotificationReceived',
-      async (notification: PushNotification) => {
-        console.log('Push received: ' + JSON.stringify(notification));
-      }
-    );
- 
-    /*PushNotifications.addListener(
-      'pushNotificationActionPerformed',
-      async (notification: PushNotificationActionPerformed) => {
-        const data = notification.notification.data;
-        console.log('Action performed: ' + JSON.stringify(notification.notification));
-        if (data.detailsId) {
-          this.router.navigateByUrl(`/home/${data.detailsId}`);
-        }
-      }
-    );*/
+
+    PushNotifications.addListener('pushNotificationReceived', (notification: PushNotificationSchema) =>{
+
+      console.log('Push received, notification ' + JSON.stringify(notification));
+    });
+
+    PushNotifications.addListener('pushNotificationActionPerformed', (action: ActionPerformed) =>{
+      console.log('Push action performed, action ' + JSON.stringify(action));
+    });
   }
 }

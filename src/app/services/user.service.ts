@@ -14,7 +14,6 @@ import { Storage } from '@capacitor/storage';
 export class UserService {
   private apiUrl = `:${ environment.port }/leavemealone/user`;
   alertController = alertController;
-  static ip: string;
 
   constructor(
     private http: HttpClient,
@@ -23,16 +22,16 @@ export class UserService {
     private router: Router
   ) { }
 
-  static saveIp(ipAddress: string){
-    UserService.ip = ipAddress;
-    return Storage.set({key:'ip', value: UserService.ip});
+  async saveIp(ipAddress: string){
+    environment.serverIp = ipAddress;
+    await Storage.set({key:'ip', value: environment.serverIp});
   }
 
-  static getIp(){
-    Storage.get({key:'ip'}).then((result) => {
-      UserService.ip = result.value;
-      return UserService.ip ? UserService.ip : '';
+  async loadIp(): Promise<string>{
+    await Storage.get({key:'ip'}).then((result) => {
+      environment.serverIp = result.value;
     });
+    return environment.serverIp;
   }
 
   createUser(user: RegisterUser): Observable<LoginUser> {
@@ -53,6 +52,7 @@ export class UserService {
     this.loginUser(email, password).subscribe(
       {
         next:(data) => {
+          console.log(data);
           this.authService.setAccessToken(data.accessToken).then(() => {
             // Begin objects state auto fetch
             this.objectsService.autoFetchObjectsState();
@@ -62,7 +62,7 @@ export class UserService {
         },
         error: (err) => {
           console.log(err);
-          this.showAlert('Can\'t connect to your account.', 'La connexion au wifi a échoué');
+          this.showAlert('Can\'t connect to your account.', 'La connexion au wifi a échoué : ' + JSON.stringify(err));
       }
     });
   }

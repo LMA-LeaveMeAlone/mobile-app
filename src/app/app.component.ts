@@ -11,12 +11,11 @@ import { Router } from '@angular/router';
 export class AppComponent {
 
   constructor(
-    private platform: Platform,
-    private fcmService: FcmService,
+    private fcmService: FcmService, // Important
     private auth: AuthService,
     private router: Router
   ) {
-    this.initializeApp();
+    fcmService.ngOnInit();
   }
 
   ngOnInit() {
@@ -24,13 +23,6 @@ export class AppComponent {
       if (accessToken.value) {
         this.router.navigate(['/login']);
       }
-    });
-  }
-
-  initializeApp() {
-    this.platform.ready().then(() => {
-      // Init the notifications receipt
-      this.fcmService.initPush();
     });
   }
 }

@@ -3,6 +3,7 @@ import { LoginUser, RegisterUser, User } from '../../models/User';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { alertController } from '@ionic/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-registration',
@@ -17,17 +18,22 @@ export class RegistrationPage implements OnInit {
   email: string;
   password: string;
   digitalKey: string;
+  ip: string;
+
+  envIp: string;
 
   alertController = alertController;
 
   constructor(
     private userService: UserService
-    ) { }
+  ) {}
 
-  ngOnInit() {
+  async ngOnInit(){
+    this.envIp = await this.userService.loadIp();
   }
+
   submit(){
-    if (!this.userName || !this.firstName || !this.lastName || !this.email || !this.password || !this.digitalKey){
+    if (!this.userName || !this.firstName || !this.lastName || !this.email || !this.password || !this.digitalKey || !this.ip){
       this.showAlert('Champs incomplets', 'Veuillez remplir tous les champs d\'inscription !');
     }
     else{
@@ -41,6 +47,7 @@ export class RegistrationPage implements OnInit {
         },
         digitalKey: this.digitalKey
       };
+      this.userService.saveIp(this.ip);
       this.userService.createUser(user).subscribe((result: LoginUser) => {
         this.showAlert('Votre compte a été créé', `Bonjour ${result.user.userName}, vous pouvez désormais vous connecter.`)
         .then(() => {

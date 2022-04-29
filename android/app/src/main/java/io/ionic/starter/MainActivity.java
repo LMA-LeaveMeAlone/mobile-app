@@ -1,4 +1,4 @@
-package com.lpiotia.lma;
+package com.lpiotia.whoisit;
 
 import com.getcapacitor.BridgeActivity;
 
