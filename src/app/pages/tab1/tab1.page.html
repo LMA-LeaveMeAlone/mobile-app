@@ -42,7 +42,7 @@
       <p>La caméra est coupée. <br />Activez-la pour avoir un aperçu de ce qu'il se passe devant votre porte.</p>
     </div>
     <ion-card-content *ngIf="cameraIsEnabled === true">
-      <img src={{dataBuffer}} alt="">
+      <img class="stream" src={{dataBuffer}} alt="">
     </ion-card-content>
   </ion-card>
 
