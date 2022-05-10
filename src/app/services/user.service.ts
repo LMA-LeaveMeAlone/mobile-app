@@ -12,7 +12,7 @@ import { Storage } from '@capacitor/storage';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = `:${ environment.port }/leavemealone/user`;
+  private apiUrl = `:${ environment.port_remote }/leavemealone/user`;
   alertController = alertController;
 
   constructor(

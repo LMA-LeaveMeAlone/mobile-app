@@ -42,10 +42,7 @@
       <p>La caméra est coupée. <br />Activez-la pour avoir un aperçu de ce qu'il se passe devant votre porte.</p>
     </div>
     <ion-card-content *ngIf="cameraIsEnabled === true">
-      <video width="100%" autoplay playsinline style="pointer-events: none;" loop>
-        <source src="https://aws-lma-video-records.s3.eu-west-3.amazonaws.com/house_id_1/2022_4_8_14_39_4.mp4"
-          type="video/mp4">
-      </video>
+      <img src={{dataBuffer}} alt="">
     </ion-card-content>
   </ion-card>
 
@@ -54,7 +51,5 @@
     <p>Dernières activités</p>
   </div>
   <app-recents></app-recents>
-
-  <img src={{dataBuffer}} alt="">
 
 </ion-content>

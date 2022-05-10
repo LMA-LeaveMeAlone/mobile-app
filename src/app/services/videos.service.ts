@@ -10,7 +10,7 @@ import { ModalVideoPage } from '../pages/modal-video/modal-video.page';
   providedIn: 'root'
 })
 export class VideosService {
-  private apiUrl = `:${environment.port}/leavemealone/record`;
+  private apiUrl = `:${environment.port_remote}/leavemealone/record`;
 
   constructor(private http: HttpClient) { }
 

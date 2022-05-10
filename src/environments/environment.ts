@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   serverIp: '',//'192.168.43.48',
-  port: '3000',
+  port: '4000',
+  port_remote: '3000',
   timeBetweenFetchObjectsState: 10000,
   timeBetweenObjectsActivation: 800
 };

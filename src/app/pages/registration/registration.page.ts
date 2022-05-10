@@ -20,8 +20,6 @@ export class RegistrationPage implements OnInit {
   digitalKey: string;
   ip: string;
 
-  envIp: string;
-
   alertController = alertController;
 
   constructor(
@@ -29,7 +27,7 @@ export class RegistrationPage implements OnInit {
   ) {}
 
   async ngOnInit(){
-    this.envIp = await this.userService.loadIp();
+    this.ip = await this.userService.loadIp();
   }
 
   submit(){

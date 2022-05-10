@@ -13,14 +13,12 @@ export class LoginPage implements OnInit {
   password: string;
   ip: string;
 
-  envIp: string;
-
   constructor(
     private userService: UserService
   ) {}
 
   async ngOnInit(){
-    this.envIp = await this.userService.loadIp();
+    this.ip = await this.userService.loadIp();
   }
 
   submit(){
