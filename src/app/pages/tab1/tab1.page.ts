@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ObjectsService } from 'src/app/services/objects.service';
 import { environment } from 'src/environments/environment';
 import { SwiperComponent } from 'swiper/angular';
@@ -12,7 +12,7 @@ SwiperCore.use([Pagination]);
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page implements OnInit{
+export class Tab1Page implements OnInit, OnDestroy{
   @ViewChild('swiper', { static: true }) swiper: SwiperComponent;
 
   microphoneIsEnabled: boolean = false;
@@ -25,6 +25,10 @@ export class Tab1Page implements OnInit{
     private socket: Socket
   ) {}
 
+  ngOnDestroy(): void {
+    this.socket.disconnect();
+  }
+
   ngOnInit(){
     this.onLiveStream();
   }
@@ -36,8 +40,8 @@ export class Tab1Page implements OnInit{
   }
 
   enableCamera(){
+    this.cameraIsEnabled ? this.socket.disconnect() : this.socket.connect() && this.socket.emit('start-stream');
     this.cameraIsEnabled = !this.cameraIsEnabled;
-    this.socket.emit('start-stream');
   }
 
   async toggleLight() {
