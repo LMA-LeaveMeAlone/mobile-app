@@ -21,3 +21,9 @@ Android build
 ```
 ionic cap sync android
 ```
+
+## Run tests
+
+```
+npm run cy
+```
