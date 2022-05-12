@@ -1,0 +1,80 @@
+.interaction-card{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1em;
+
+    ion-button{
+        width: 70px;
+        height: 70px;
+        border: 2px solid var(--ion-color-primary);
+        border-radius: 15px;
+        --background: none !important;
+        color: black;
+
+        ion-icon{
+            position: absolute;
+            top: 18%;
+        }
+        
+        p{
+            position: absolute;
+            bottom: 18%;
+        }
+    }
+}
+
+.signal {
+    position: absolute;
+    width: 1.2em;
+    height: 1.2em;
+    border-radius: 100%;
+    right: 10px;
+    top: 10px;
+    z-index: 1;
+}
+
+.card-text{
+    font-size: 0.9em;
+    margin-left: 5%;
+}
+
+ion-card-header{
+    display: flex;
+    align-items: center;
+    gap: 4%;
+
+    div{
+        border-left: 0.2em solid var(--ion-color-primary);
+
+        p{
+            font-size: 0.9em;
+            margin-left: 5%;
+        }
+    }
+}
+
+video{
+    border-radius: 7px;
+}
+
+.swiper{
+    overflow: inherit !important;
+}
+
+.info-card{
+    text-align: center;
+    border: 2px solid var(--ion-color-primary);
+    border-radius: 15px;
+    padding-top: 8%;
+    padding-bottom: 8%;
+
+    .entity{
+        font-weight: bold;
+        color: black;
+    }
+}
+
+.stream{
+    display: flex;
+    justify-content: center;
+}

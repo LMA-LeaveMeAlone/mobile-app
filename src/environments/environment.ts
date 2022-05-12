@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  serverIp: '',//'192.168.43.48',
+  port: '4000',
+  port_remote: '3000',
+  timeBetweenFetchObjectsState: 10000,
+  timeBetweenObjectsActivation: 800
 };
 
 /*

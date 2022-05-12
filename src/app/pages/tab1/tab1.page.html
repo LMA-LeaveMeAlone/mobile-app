@@ -1,0 +1,55 @@
+<ion-content [fullscreen]="true">
+  <app-tab-title [title]="'Interagir avec la porte'"></app-tab-title>
+
+  <!-- Door interaction -->
+  <div class="card-title">
+    <p>Interagir</p>
+  </div>
+  <ion-card>
+    <ion-card-content class="interaction-card">
+      <ion-button (click)="toggleAlarm()" [class.button-disabled]="btnAlarmDisabled">
+        <ion-icon name="notifications-outline" *ngIf="isAlarming() === true"></ion-icon>
+        <ion-icon name="notifications-off-outline" *ngIf="isAlarming() !== true"></ion-icon>
+        <p>Alarme</p>
+      </ion-button>
+      <ion-button (click)="toggleLight()">
+        <ion-icon name="flash-outline" *ngIf="isLighting() === true"></ion-icon>
+        <ion-icon name="flash-off-outline" *ngIf="isLighting() !== true"></ion-icon>
+        <p>Lumière</p>
+      </ion-button>
+      <ion-button (click)="this.microphoneIsEnabled = !this.microphoneIsEnabled">
+        <ion-icon name="mic-outline" *ngIf="microphoneIsEnabled === true"></ion-icon>
+        <ion-icon name="mic-off-outline" *ngIf="microphoneIsEnabled !== true"></ion-icon>
+        <p>Parler</p>
+      </ion-button>
+      <ion-button (click)="enableCamera()">
+        <ion-icon name="eye-outline" *ngIf="cameraIsEnabled === true"></ion-icon>
+        <ion-icon name="eye-off-outline" *ngIf="cameraIsEnabled !== true"></ion-icon>
+        <p>Voir</p>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Camera view -->
+  <div class="card-title">
+    <p>Caméra</p>
+  </div>
+  <ion-card>
+    <div class="signal"
+      [ngStyle]="{'background-color': cameraIsEnabled === true ? 'var(--ion-color-success)' : 'var(--ion-color-danger)' }">
+    </div>
+    <div class="card-text" *ngIf="cameraIsEnabled !== true">
+      <p>La caméra est coupée. <br />Activez-la pour avoir un aperçu de ce qu'il se passe devant votre porte.</p>
+    </div>
+    <ion-card-content *ngIf="cameraIsEnabled === true">
+      <img class="stream" src={{dataBuffer}} alt="">
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Recents activity -->
+  <div class="card-title">
+    <p>Dernières activités</p>
+  </div>
+  <app-recents></app-recents>
+
+</ion-content>

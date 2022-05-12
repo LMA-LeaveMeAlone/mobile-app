@@ -1,0 +1,16 @@
+<ion-content [fullscreen]="true">
+  <app-tab-title [title]="'Enregistrements vidéos'"></app-tab-title>
+
+  <!-- Videos -->
+  <div class="content">
+    <ion-card *ngFor="let video of videos; let i = index">
+      <ion-card-content [ngStyle]="{'background-color': glowIndex === i ? '#cee4f5' : ''}">
+        <ion-icon name="videocam-outline"></ion-icon>
+        <h2>{{video.datetime | date:'dd/MM/yyyy hh:mm:ss'}}</h2>
+        <ion-button color="primary" (click)="openVideo(video)">
+          <ion-icon name="eye-outline"></ion-icon>
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

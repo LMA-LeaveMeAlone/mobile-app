@@ -1,0 +1,25 @@
+<ion-card class="recommandations">
+  <ion-card-content>
+    <swiper [slidesPerView]=1.5 [spaceBetween]=10 #swiper>
+      <!--<div *ngIf="recommandations">-->
+        <ng-template swiperSlide *ngFor="let r of recommandations | slice:0:5">
+          <div (click)="openVideo(r)">
+            <video width="100%" preload="metadata" playsinline style="pointer-events: none;">
+              <source src="{{r.url}}" type="video/mp4">
+            </video>
+            <div class="video-info">
+              <p>
+                <b>{{ r.message }}</b><br>
+                {{ r.datetime | date:'dd/MM/yyyy'}}<br>
+                {{ r.datetime | date:'hh:mm:ss'}}
+              </p>
+            </div>
+          </div>
+        </ng-template>
+      <!--</div>
+      <div *ngIf="!recommandations">
+        <p>Aucune entité n'a été détecté pour le moment.</p>
+      </div>-->
+    </swiper>
+  </ion-card-content>
+</ion-card>
